@@ -1,33 +1,37 @@
-import logo from './logo.svg';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import useMetaMask from "./hooks/useMetaMask";
 
 import Header from './components/header';
 import Footer from './components/footer';
 
 import HomeScreen from './screens/HomeScreen';
+import SignupScreen from './screens/SignupScreen';
+import LoginScreen from "./screens/LoginScreen";
 
 
 
 function App() {
+  const { connect, disconnect, isActive, account } = useMetaMask();
   return (
-    // <Router>
-    //   <Header/>
-    //   <main className='py-3'>
-    //     <Container>
-    //       {/* <Route path='/login' component={LoginScreen} />
-    //       <Route path='/product/:id' component={ProductScreen} />
-    //       <Route path='/cart/:id?' component={CartScreen} /> */}
-    //       <Route path='/' component={HomeScreen} exact/>
-    //     </Container>
-    //   </main>
-    //   <Footer/>
-    // </Router>
-    <div class="bg-dark">
-      <Header/>
-      <HomeScreen/>
-      <Footer/>
-    </div>
+    <Router>
+      <div className="bg-dark">
+        <Header/>
+        <main className='py-3'>
+          <Routes>
+            <Route path="/signup" element={<SignupScreen 
+                                            connect={connect}
+                                            disconnect={disconnect}
+                                            isActive={isActive}
+                                            account={account}
+              />} 
+            />
+            <Route path="/login" element={<LoginScreen/>} />
+            <Route path="/" element={<HomeScreen/>} exact />
+          </Routes>
+        </main>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 

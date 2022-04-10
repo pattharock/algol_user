@@ -11,7 +11,7 @@ const styles = {
 }
 const Footer = () => {
   return (
-    <footer class="bg-dark" style={styles.footer}>
+    <footer className="bg-dark" style={styles.footer}>
       <Container>
         <Row>
           <Col className="text-center py-3">

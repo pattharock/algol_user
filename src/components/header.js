@@ -33,7 +33,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <LinkContainer to='/login'>
-                <Nav.Link><i color='white' className="fas fa-user"></i> Log In</Nav.Link>
+                <Nav.Link><i color='white' className="fas fa-user text-dark"></i> Log In</Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>

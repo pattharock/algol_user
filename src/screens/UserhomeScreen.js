@@ -21,19 +21,16 @@ const styles = {
     color: "#7ee6e4"
   }
 }
-const HomeScreen = () => {
+const UserhomeScreen = () => {
 
   return (
     <div className="bg-dark" style={styles.homeStyles} >
       <Container style={styles.container}>
         <img alt="logo" src={require('../static/logo.png')} />
-        <p style={styles.h1}>Decentralised Academic Identity Management</p>
-        <p style={styles.h2}>
-          <a style={styles.a} href='/signup'>Signup</a> or <a style={styles.a} href="/login">Login</a> to continue.
-        </p>
+        <h1 style={styles.h1}>User Logged In Home</h1>
       </Container>
     </div>
   )
 }
 
-export default HomeScreen
+export default UserhomeScreen

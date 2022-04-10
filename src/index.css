@@ -42,5 +42,16 @@ h2 {
 }
 
 body {
-  display: "flex";
+  display: 'flex';
+}
+
+.form-input-color::placeholder {
+  color: '#FA5C5C';
+}
+input.form-input-color::placeholder {
+  font-size: 1.2rem;
+  color: #fa5c5c;
+}
+input.form-input-color:focus {
+  border: 1px solid #fa5c5c;
 }
