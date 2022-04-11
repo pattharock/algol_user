@@ -27,7 +27,10 @@ const LoginScreen = () => {
     <div className="bg-dark" style={styles.homeStyles} >
       <Container style={styles.container}>
         <img alt="logo" src={require('../static/logo.png')} />
-        <h1 style={styles.h1}>Log In</h1>
+        <p style={styles.h1}>Sign Up</p>
+        <p style={styles.h2}>
+           Have an Account ?<a style={styles.a} href="/login">Login</a> to continue.
+        </p>
       </Container>
     </div>
   )

@@ -9,7 +9,6 @@ import Web3 from "web3/dist/web3.min.js";
 import { Web3ReactProvider } from "@web3-react/core";
 import { MetaMaskProvider } from "./hooks/useMetaMask";
 
-
 function getLibrary(provider, connector) {
   return new Web3(provider);
 }
