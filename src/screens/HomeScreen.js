@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Table } from 'react-bootstrap';
-// import rsa from 'js-crypto-rsa';
-// import {encrypt, decrypt} from '../components/pki';
+import {encrypt, decrypt} from '../components/pki';
 import axios from 'axios';
 
 const styles = {
