@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import {Navbar, Nav, Container } from 'react-bootstrap'; 
+import {Navbar, Nav, Container } from 'react-bootstrap';
+// import rsa from 'js-crypto-rsa';
 
 const style = {
   navbar: {
@@ -22,6 +23,18 @@ const style = {
 }
 
 const Header = () => {
+  var User = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+  const [user, setUser] = useState(User);
+
+  const handleClick = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  }
+
+  useEffect(() => {
+    console.log("user", user);
+  } , [user]);
+
   return (
     <header style={style.header}>
       <Navbar style={style.navbar} expand="lg" collapseOnSelect>
@@ -32,9 +45,20 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <LinkContainer to='/login'>
-                <Nav.Link><i color='white' className="fas fa-user text-dark"></i> Log In</Nav.Link>
-              </LinkContainer>
+              {!user && (
+                <LinkContainer to='/login'>
+                  <Nav.Link>
+                    <i color='white' className="fas fa-user text-dark"></i> Log In
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+              {user && (
+                <LinkContainer to='#' onClick={handleClick}>
+                  <Nav.Link>
+                    <i color='white' className="fas fa-user text-dark"></i>Sign Out
+                  </Nav.Link>
+                </LinkContainer>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

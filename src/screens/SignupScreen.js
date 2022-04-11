@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import axios from "axios";
 import Loader from '../components/loader';
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   homeStyles: {
@@ -55,7 +56,7 @@ const styles = {
 
 
 const SignupScreen = ({connect, disconnect, isActive, account}) => {
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (isActive) {
       setWalletAddress(account);
@@ -74,7 +75,7 @@ const SignupScreen = ({connect, disconnect, isActive, account}) => {
       <div className="bg-dark" style={styles.homeStyles} >
         <Container style={styles.container}>
           <img alt="logo" src={require('../static/logo.png')} />
-          <Loader message="Signing up..." />
+          <Loader message="Creating ALGOL account, generating key-pair" />
         </Container>
       </div>
     )
@@ -133,8 +134,10 @@ const SignupScreen = ({connect, disconnect, isActive, account}) => {
                 setLoading(false);
                 const status = response.data.success;
                 if(status){
-                 const userData = JSON.stringify(response.data.user);
-                 localStorage.setItem('user', userData); 
+                  const userData = JSON.stringify(response.data.user);
+                  localStorage.setItem('user', userData); 
+                  console.log(userData);
+                  navigate('/');
                 }
               }, (error) => 
               {
